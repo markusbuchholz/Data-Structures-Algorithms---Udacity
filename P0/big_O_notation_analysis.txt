@@ -1,0 +1,29 @@
+### RUN TIME ANALYSIS
+
+The file includes the explanation of run time analysis (Worst Case Big O Notation) for each solution student produced.
+
+### TASK 0
+The solution for this task is independent (constant) from the number of inputs (n) therefore we can estimate the efficiency as follows:
+efficiency = O(1)
+
+### TASK 1
+The solution for this task is linear depended the number of inputs (n) - the time increase while number of inputs increase therefore we can estimate the efficiency as follows:
+efficiency = O(n)
+
+### TASK 2
+The solution for this task is similar to solution presented in task 1 so it is linear depended the number of inputs (n) - the time increase while number of inputs increase,
+therefore we can estimate the efficiency as follows:
+efficiency = O(n)
+
+### TASK 3
+The solution for this task includes the sort() method.
+Applied algorithm (in sort ()) can be estimated as highest time demanded (worst) in presented task 3 solution.
+According to https://wiki.python.org/moin/TimeComplexity,the time complexity for the sort() function has been estimated as follows O(n log n).
+It means that the time efficiency in presented solution (task 3) can be estimated also as follows:
+efficiency = O(n log n)
+
+### TASK 4
+In presented solution there have been applied both the sort() and find () methods.
+The sort() method with the time complexity O(n log n) is worst then the search method with the time complexity 0(log n),
+therefore the timecomplexity for this task can be estimate as:
+efficiency = O(n log n)
