@@ -45,9 +45,8 @@ def main():
 
     merged_list_of_telephones = merge_telephone_numbers_from_lists(texts,calls)
     different_telephone_numbers = check_different_telephone_numbers(merged_list_of_telephones)
-    print("There are", different_telephone_numbers,"different telephone numbers in the records.")
-
-
+    print("There are ", different_telephone_numbers," different telephone numbers in the records.")
+ 
 
 if __name__ == "__main__":
     main()
