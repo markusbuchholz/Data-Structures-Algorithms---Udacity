@@ -50,29 +50,36 @@ The percentage should have 2 decimal digits
 
 
 def find_fix_lines_mobile_tele_called_from_bangladore(calls):
-  fix_lines = []
-  mobile = []
-  telemarketers = []
+
+  calls_bangladore = []
+  
   for record in calls:
-    if ((record[0].find('(080)'))!= -1):
-      fix_lines.append(record[1])
-    if ((record[0].find(" "))> -1):
-      mobile.append(record[1])
-    if ((record[0].find(" "))==-1) and ((record[0].find('140'))!= -1):
-      telemarketers.append(record[1])
-  return fix_lines, mobile, telemarketers
+    if ((record[0].find('(080)'))> -1):
+      calls_bangladore.append(record[1])
+  
+  # for line in calls_bangladore:
+
+  #     if ((record[0].find(" "))> -1):
+  #       mobile.append(record[1])
+  #     if ((record[0].find(" "))==-1) and ((record[0].find('140'))!= -1):
+  #       telemarketers.append(record[1])
+
+
+  return calls_bangladore #fix_lines, mobile, telemarketers
 
 
 
-def grab_area_codes (fix_lines, mobile, telemarketers):
+def grab_area_codes (calls_bangladore): # (fix_lines, mobile, telemarketers):
 
-  codes_fix_lines = []
-  codes_mobile = []
-  codes_telemarketers = []
+  # codes_fix_lines = []
+  # codes_mobile = []
+  # codes_telemarketers = []
+  #print("--------  ", len(calls_bangladore))
   area_codes = []
   code_str = ""
 
-  for lines in fix_lines + mobile + telemarketers:
+  for lines in calls_bangladore:# fix_lines + mobile + telemarketers:
+    #print(lines)
     
     i = lines.find('(')
     j = lines.find(')')
@@ -88,7 +95,7 @@ def grab_area_codes (fix_lines, mobile, telemarketers):
     
     if ((lines.find(" ")!=-1) and (lines[0] == 7 or 8 or 9)):
       area_codes.append(lines[0:4])
-
+  print("bingo ::", len( area_codes))
   return area_codes
     
 def sorting_area_code_list(list_to_sort):
@@ -100,6 +107,7 @@ def sorting_area_code_list(list_to_sort):
 def printing_output_per_line(list_to_print):
   
   print("The numbers called by people in Bangalore have codes:")
+  print("length _ my :::", len(list_to_print))
   for line in list_to_print:
     print(line)
   return 0
@@ -112,16 +120,17 @@ def banglador_internal_fix_line_calls(fix_lines):
   for internal_line in fix_lines:
     if ((internal_line.find('(080)'))!= -1):
       line_counter +=1
-  print(round((line_counter/total_calls)*100), "percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
+  #two_bit = format(percent*100, '.2f')
+  print(format((line_counter/total_calls)*100,'.2f'), "percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
 
   return 0
 
 def main():
-  fix_lines, mobile, telemarketers = find_fix_lines_mobile_tele_called_from_bangladore (calls)
-  area_codes = grab_area_codes (fix_lines, mobile, telemarketers)
+  calls_bangladore = find_fix_lines_mobile_tele_called_from_bangladore (calls)
+  area_codes = grab_area_codes (calls_bangladore) #fix_lines, mobile, telemarketers)
   sorted_list_of_area_codes = sorting_area_code_list(area_codes)
   printing_output_per_line(sorted_list_of_area_codes)
-  banglador_internal_fix_line_calls(fix_lines)
+  banglador_internal_fix_line_calls(calls_bangladore)
 
 
 if __name__ == "__main__":
