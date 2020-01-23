@@ -3,27 +3,77 @@
 The file includes the explanation of run time analysis (Worst Case Big O Notation) for each solution student produced.
 
 ### TASK 0
-The solution for this task is independent (constant) from the number of inputs (n) therefore we can estimate the efficiency as follows:
+The solution for this task was deployed in one function main().
+
+The function prints the hard coded positions of value in lists so the solution for this task is independent (constant) from the number of inputs (n).
+
+Since there is only one function in program so we can estimate the efficiency of this task considering only one function - the main(). 
+For this function (and for task 0), the efficiency can be estimated as follows:
 efficiency = O(1)
 
 ### TASK 1
-The solution for this task is linear depended the number of inputs (n) - the time increase while number of inputs increase therefore we can estimate the efficiency as follows:
-efficiency = O(n)
+
+The algorithm to solve this task consist of 3 functions.
+
+As standard in this project the lowest complexity holds the main() function which only calls and prints. Complexity in this case is O(1).
+
+The merge_telephone_numbers() function represents the nested for loop (2 loops) so the complexity in this case is O(n*n).
+Next function check_different_numbers() includes the Counter() which according to stackoverflow https://stackoverflow.com/questions/42461840/what-is-the-time-complexity-of-collections-counter-in-python can be estimated for O(n).
+
+Summarising deployed solution the complexity of chosen algorithm can be estimated (function merge_telephone_numbers() - worst) for O(n*n)
+
 
 ### TASK 2
-The solution for this task is similar to solution presented in task 1 so it is linear depended the number of inputs (n) - the time increase while number of inputs increase,
-therefore we can estimate the efficiency as follows:
-efficiency = O(n)
+
+The algorithm to solve this task consist of 3 functions.
+
+As in task 1 the lowest complexity holds the main() function which only calls and prints. Complexity in this case is O(1).
+
+The function prepare_dict_for_input_record() is a single for loop with the complexity estimated for O(n).
+
+Third and last function find_longest_time_and_user() consist on standard Python inherited function max() which was estimated for O(n).
+
+Totally, for the whole task 2 the complexity can be estimated for O(n). 
+
 
 ### TASK 3
-The solution for this task includes the sort() method.
-Applied algorithm (in sort ()) can be estimated as highest time demanded (worst) in presented task 3 solution.
-According to https://wiki.python.org/moin/TimeComplexity,the time complexity for the sort() function has been estimated as follows O(n log n).
-It means that the time efficiency in presented solution (task 3) can be estimated also as follows:
-efficiency = O(n log n)
+
+The algorithm to solve this task consist of 5 functions.
+
+The main() function is the same like for the task 1 and complexity equals O(1).
+
+Starting from the top.
+Function find_lines_called_from_bangladore() is a standard for loop function with the complexity is O(n).
+
+Function grab_area_codes() represents the nested for loop (2 loops) so the complexity in this case is O(n*n).
+
+Next function sorting_area_code_list() includes the sort() method with the complexity O(n log n).
+
+The last function internal_fix_lines() includes find() method (complexity O(log n) ) which is nested in for loop complexity O(n).
+
+Based on this information the total complexity for this function can be estimated for O(n log n).
+
+Summarising deployed solution, the complexity of chosen algorithm can be estimated (internal_fix_lines() - worst ) for O(n log n).
+
+
 
 ### TASK 4
-In presented solution there have been applied both the sort() and find () methods.
-The sort() method with the time complexity O(n log n) is worst then the search method with the time complexity 0(log n),
-therefore the timecomplexity for this task can be estimate as:
-efficiency = O(n log n)
+
+The algorithm to solve this task consist of 4 functions. The simplest one the main() calls other function and prints the final output. The efficiency for this function can be 
+estimated as O(1) - not depending on number of inputs.
+
+Function collect_callers_receivers() analyses one by one the line input list and search (per line) defined hard coded characters. In this case total efficiency for this function can be
+estimated as follows. Complexity for the loop is O(n) and for find() the complexity is O(log n). Since the find() as discussed above is performed n times so total complexity for this function
+is 0(n log n).
+
+Next function gather_text_numbers() performs only the loop through the whole list, analysing each line so the complexity is only relevant with length of the input list. In this case
+complexity can be estimated for O(n).
+
+Last function compare_lists() includes checks in for loop so the complexity is O(n), sort() method with complexity of O(n log n) and Counter() which according to post on stackoverflow
+https://stackoverflow.com/questions/42461840/what-is-the-time-complexity-of-collections-counter-in-python  can be estimated for O(n). The worst case in this function can be associated with
+sort() method therefor the function compare_lists() complexity is O(n log n)
+
+Based on presented analysis (4 functions) we can estimated that the bottle neck for this task is a sort() method and solution deployed in collect_callers_receivers() - combination of loop and find() method.
+In both cases the complexity has been estimated as 0(n log n) so for the whole task 1 can also be estimated as 0(n log n).
+
+

@@ -24,7 +24,7 @@ Print a message:
 """
 
 
-def merge_telephone_numbers_from_lists (list1, list2):
+def merge_telephone_numbers (list1, list2):
 
     telephone_numbers = []
     telephone_list = [list1, list2]
@@ -35,7 +35,7 @@ def merge_telephone_numbers_from_lists (list1, list2):
             telephone_numbers.append(tel[1])
     return telephone_numbers
 
-def check_different_telephone_numbers(all_telephone_numbers):
+def check_different_numbers(all_telephone_numbers):
     
     different_telephone_occurence = (Counter(all_telephone_numbers)).values()
     return len(different_telephone_occurence)
@@ -43,8 +43,8 @@ def check_different_telephone_numbers(all_telephone_numbers):
 
 def main():
 
-    merged_list_of_telephones = merge_telephone_numbers_from_lists(texts,calls)
-    different_telephone_numbers = check_different_telephone_numbers(merged_list_of_telephones)
+    merged_list_of_telephones = merge_telephone_numbers(texts,calls)
+    different_telephone_numbers = check_different_numbers(merged_list_of_telephones)
     print("There are ", different_telephone_numbers," different telephone numbers in the records.")
  
 
