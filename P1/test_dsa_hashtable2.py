@@ -9,6 +9,7 @@ class LRU_Cache(object):
         self.backet_array = [None for i in range(self.size)]
         self.count = 0
         self.p = 37
+        self.recently_used = None
 
     def _hash(self, key):
         mult = 1
@@ -43,6 +44,8 @@ class LRU_Cache(object):
         if self.backet_array[h] is None:
             self.count += 1
         self.backet_array[h] = item
+        print(" ===  ", self.backet_array[h].value)
+        #self.recently_uded = item
 
     def get(self, key):
         h = self._hash(key)
