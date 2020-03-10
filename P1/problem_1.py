@@ -9,7 +9,6 @@ hash table holds the key
 *** if we woud like to get the vale with the key which is not exist so we return -1
 """
 
-#!/usr/bin/env python3
 
 
 class Node:
@@ -25,7 +24,7 @@ class LRU_Cache:
 
     def __init__(self, capacity):
         self.capacity = capacity
-        self.hashtable = {} #dict()
+        self.hashtable = {} 
         self.head = Node(0, 0)
         self.tail = Node(0, 0)
         self.head.next = self.tail
@@ -54,7 +53,6 @@ class LRU_Cache:
         node = self.hashtable[key]
         self._update_head_and_remove_node(node)
 
-
         return node.value
 
     def set(self, key, value):
@@ -64,14 +62,11 @@ class LRU_Cache:
             node = self.hashtable[key]
             node.value = value
    
-
             self._update_head_and_remove_node(node)
-
-
 
         else:
             node = Node(key, value)
-            #self._add(node)
+           
             node.prev = self.head
             node.next = self.head.next
 
@@ -96,42 +91,67 @@ class LRU_Cache:
 
 
 
-
-
-
 if __name__ == '__main__':
 
-
-
-
-
-    def run_test_last_recently_used():
-        print('\nRunning multiple tests....')
-        # Initialize
+    def test_1(): # test from the course
+        print("***********************************************")
         cache = LRU_Cache(5)
         cache.set(1, 1)
         cache.set(2, 2)
         cache.set(3, 3)
         cache.set(4, 4)
-        # cache.set(5, 5)
-        # print(cache.set(6, 6))
-        # print(cache.set(7, 7))
-        # print(cache.set(8, 8))
-        # print(cache.set(9, 9))
-        # print(cache.set(10, 10))
 
-        print(cache.get(1))     # 1
-        print(cache.get(2))
-        print(cache.get(9))     # 2
-        #print(cache.get(9))     # -1 because 9 is not present in the cache
-       # print(list(cache.hashtable.keys()))
-    
+        print(cache.get(1)) 
+        # 1
+        print(cache.get(2)) 
+        # 2
+        print(cache.get(9))
+        # -1 because 9 is not present in the cache
+        cache.set(5, 5)
+        cache.set(6, 6)
+        print(cache.get(3))     
+        # -1 because the cache reached it's capacity and 3 was the least recently used entry
+        print(list(cache.hashtable.keys()))  
+        # [1, 2, 4, 5, 6]
+
+    def test_2(): #capacity test on cache
+        print("***********************************************")
+        cache = LRU_Cache(5)
+        cache.set(1, 1)
+        cache.set(2, 2)
+        cache.set(3, 3)
+        cache.set(4, 4)
 
         cache.set(5, 5)
         cache.set(6, 6)
-        print("******************'")
-        print(cache.get(3))     # -1 because the cache reached it's capacity and 3 was the least recently used entry
-        print(list(cache.hashtable.keys()))  # [1, 2, 4, 5, 6]
+        print(cache.get(1))         
+        # -1
+        print(cache.get(2))         
+        # 2
+        print(cache.get(3))         
+        # 3
 
+    def test_3(): #input testing
+        print("***********************************************")
+        cache = LRU_Cache(5)
+        cache.set(1, 1)
+        cache.set(2, 2)
+        cache.set(3, 3)
+        cache.set(4, 4)
 
-    run_test_last_recently_used()
+        
+        print(cache.get(99)) 
+        # -1
+        print(cache.get('abc'))         
+        # -1
+        print(cache.get(-10*2))     
+        # -1
+        print(cache.get(False))     
+        # -1
+
+    
+
+    test_1() #from course
+    test_2() #edge_test
+    test_3() #edge_test
+  
