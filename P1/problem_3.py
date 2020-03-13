@@ -2,8 +2,6 @@ from collections import Counter
 import sys
 
 
-###########################################
-
 class LinkedListNode:
     
     def __init__(self, key, value):
@@ -24,14 +22,12 @@ class HashMap:
         new_node = LinkedListNode(key, value)
         head = self.bucket_array[bucket_index]
 
-        # check if key is already present in the map, and update it's value
         while head is not None:
             if head.key == key:
                 head.value = value
                 return
             head = head.next
 
-        # key not found in the chain --> create a new entry and place it at the head of the chain
         head = self.bucket_array[bucket_index]
         new_node.next = head
         self.bucket_array[bucket_index] = new_node
@@ -67,7 +63,6 @@ class HashMap:
         return self.num_entries
 
 
-###########################################
 
 h_tree = []
 
@@ -91,7 +86,7 @@ def compute_frequencies (data):
 
 
 def huffman_codes(text):
-    #huffman_tree = {}
+
     freq = compute_frequencies(text)
 
 
@@ -99,8 +94,10 @@ def huffman_codes(text):
         left_i, left_j = find_min(freq)
         right_i, right_j = find_min(freq)
         freq.append((left_i + right_i, (left_j, right_j)))
- 
-    binary_coding(freq.pop()[1])
+    try:
+        binary_coding(freq.pop()[1])
+    except:
+        print("No data to encode!")
 
 def binary_coding(tree, prefix=''):
     
@@ -134,7 +131,7 @@ def huffman_decoding(data, tree):
     for i in h_tree:
         hash_map.put(i[1], i[0])
 
-    ijk = data #sum_c
+    ijk = data 
     sum_ch=str('')
     decoding = ''
 
@@ -142,107 +139,145 @@ def huffman_decoding(data, tree):
         sum_ch = ijk[i] + sum_ch
         sum_ch_rot = sum_ch[len(sum_ch)::-1]
         if hash_map.get(sum_ch_rot):
-            ####print("OK")
+           
             d = hash_map.get(sum_ch_rot)
             decoding = decoding + d
             sum_ch=str('')
-    #print(decoding)
+    
     return decoding
 
 
 
 
 if __name__ == "__main__":
-    #codes = {}
+   
     def test_1():
         print("**************************************************")
         a_great_sentence = 'The Terminator and Michael Jordan AIR'
         
-        print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
-        print ("The content of the data is: {}\n".format(a_great_sentence))
-
         encoded_data, tree = huffman_encoding(a_great_sentence)
 
-        #print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-        print ("The content of the encoded data is: {}\n".format(encoded_data))
+        if encoded_data:
+        
+            print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+            print ("The content of the data is: {}\n".format(a_great_sentence))
 
-        decoded_data = huffman_decoding(encoded_data, tree)
 
-        print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-        print ("The content of the encoded data is: {}\n".format(decoded_data))
+            print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+            print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+            decoded_data = huffman_decoding(encoded_data, tree)
+
+            print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+            print ("The content of the encoded data is: {}\n".format(decoded_data))
 
     def test_2():
         print("**************************************************")
         a_great_sentence = 'Markus Buchholz, Norway, 4032 Stavanger'
 
-        print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
-        print ("The content of the data is: {}\n".format(a_great_sentence))
-
         encoded_data, tree = huffman_encoding(a_great_sentence)
 
-        #print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-        print ("The content of the encoded data is: {}\n".format(encoded_data))
+        if encoded_data:
 
-        decoded_data = huffman_decoding(encoded_data, tree)
+            print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+            print ("The content of the data is: {}\n".format(a_great_sentence))
 
-        print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-        print ("The content of the encoded data is: {}\n".format(decoded_data))
+
+            print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+            print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+            decoded_data = huffman_decoding(encoded_data, tree)
+
+            print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+            print ("The content of the encoded data is: {}\n".format(decoded_data))
 
 
     def test_3():
         print("**************************************************")
         a_great_sentence = 'aaabbbbbcccccddddddddeeeeeeeefffffffffffffffffgggggggggggggggggggggggggggggåååååååøøøøøøøøøøøæææææææææ'
 
-        print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
-        print ("The content of the data is: {}\n".format(a_great_sentence))
-
         encoded_data, tree = huffman_encoding(a_great_sentence)
 
-        #print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-        print ("The content of the encoded data is: {}\n".format(encoded_data))
+        if encoded_data:
 
-        decoded_data = huffman_decoding(encoded_data, tree)
+            print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+            print ("The content of the data is: {}\n".format(a_great_sentence))
 
-        print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-        print ("The content of the encoded data is: {}\n".format(decoded_data))
+
+            print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+            print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+            decoded_data = huffman_decoding(encoded_data, tree)
+
+            print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+            print ("The content of the encoded data is: {}\n".format(decoded_data))
 
 
     def test_4():
         print("**************************************************")
-        #a_great_sentence = 'The Terminator and Michael Jordan AIR'
+       
         a_great_sentence = 'AAAAAAA'
-
-        print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
-        print ("The content of the data is: {}\n".format(a_great_sentence))
 
         encoded_data, tree = huffman_encoding(a_great_sentence)
 
-        #print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-        print ("The content of the encoded data is: {}\n".format(encoded_data))
+        if encoded_data:
 
-        decoded_data = huffman_decoding(encoded_data, tree)
+            print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+            print ("The content of the data is: {}\n".format(a_great_sentence))
 
-        print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-        print ("The content of the encoded data is: {}\n".format(decoded_data))
+          
+
+            print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+            print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+            decoded_data = huffman_decoding(encoded_data, tree)
+
+            print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+            print ("The content of the encoded data is: {}\n".format(decoded_data))
 
 
     def test_5():
         print("**************************************************")
-        #a_great_sentence = 'The Terminator and Michael Jordan AIR'
+        
         a_great_sentence = '1111111'
-
-        print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
-        print ("The content of the data is: {}\n".format(a_great_sentence))
 
         encoded_data, tree = huffman_encoding(a_great_sentence)
 
-        #print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-        print ("The content of the encoded data is: {}\n".format(encoded_data))
+        if encoded_data:
 
-        decoded_data = huffman_decoding(encoded_data, tree)
+            print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+            print ("The content of the data is: {}\n".format(a_great_sentence))
 
-        print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-        print ("The content of the encoded data is: {}\n".format(decoded_data))
+
+            print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+            print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+            decoded_data = huffman_decoding(encoded_data, tree)
+
+            print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+            print ("The content of the encoded data is: {}\n".format(decoded_data))
+
+    def test_6():
+        print("**************************************************")
+        
+        a_great_sentence = ''
+
+        encoded_data, tree = huffman_encoding(a_great_sentence)
+
+        if encoded_data:
+
+            print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+            print ("The content of the data is: {}\n".format(a_great_sentence))
+
+            
+
+            #print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+            print ("The content of the encoded data is: {}\n".format(encoded_data))
+
+            decoded_data = huffman_decoding(encoded_data, tree)
+
+            print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+            print ("The content of the encoded data is: {}\n".format(decoded_data))
 
 
 
@@ -251,3 +286,4 @@ if __name__ == "__main__":
     test_3()
     test_4()
     test_5()
+    test_6()
