@@ -69,6 +69,7 @@ def intersection(llist_1, llist_2):
     temp_inter_list1 = []
     temp_inter_list2 = []
     temp_inter_list3 = []
+    temp_inter_list4 = []
 
     while current_element1 is not None:
         temp_inter_list1.append(current_element1.value)
@@ -77,13 +78,14 @@ def intersection(llist_1, llist_2):
     while current_element2 is not None:
         temp_inter_list2.append(current_element2.value)
         current_element2 = current_element2.next
-
-    for i in range(len(temp_inter_list1)):
-        for j in range(len(temp_inter_list2)):
-            if temp_inter_list1[i]==temp_inter_list2[j]:
-                temp_inter_list3.append(temp_inter_list2[j])
     
-    set_list = set (temp_inter_list3)
+    temp_inter_list3 = temp_inter_list1 + temp_inter_list2
+
+    for k in range(len(temp_inter_list1)):
+        if temp_inter_list3[k] in temp_inter_list2:
+            temp_inter_list4.append(temp_inter_list1[k])
+    
+    set_list = set (temp_inter_list4)
     for set_el in set_list:
         linked_intersection.append(set_el)
     return linked_intersection
