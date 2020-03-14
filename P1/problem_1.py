@@ -149,9 +149,160 @@ if __name__ == '__main__':
         print(cache.get(False))     
         # -1
 
-    
+    def test_4(): # test from the course
+        print("***********************************************")
+        cache = LRU_Cache(0)
+        cache.set(1, 1)
+        cache.set(2, 2)
+        cache.set(3, 3)
+        cache.set(4, 4)
+
+        print(cache.get(1)) 
+        # -1
+        print(cache.get(2)) 
+        # .1
+        print(cache.get(9))
+        # -1
+        cache.set(5, 5)
+        cache.set(6, 6)
+        print(cache.get(3))     
+        # -1 because 
+        print(list(cache.hashtable.keys()))
+        #[]
+        print("capacity  :: ", len(cache.hashtable.keys()))
+        #capacity  :: 0 
+
+    def test_5(): #capacity test on cache
+        print("***********************************************")
+        cache = LRU_Cache(6)
+        cache.set(1, 1)
+        cache.set(2, 2)
+        cache.set(3, 3)
+        cache.set(4, 4)
+        cache.set(8, 8)
+
+        cache.set(5, 5)
+        cache.set(6, 6)
+        cache.set(7, 7)
+        print(cache.get(1))         
+        # -1
+        print(cache.get(2))         
+        # -1
+        print(cache.get(3))
+        #3
+        print(cache.get(6)) 
+        #6
+        print(cache.get(8))          
+        # 8
+
+    def test_6(): #capacity test on cache
+        print("***********************************************")
+        cache = LRU_Cache(10)
+        cache.set(1, 1)
+        cache.set(2, 2)
+        cache.set(3, 3)
+        cache.set(4, 4)
+        cache.set(8, 8)
+        cache.set(8, 10)
+        cache.set(8, 99)
+        cache.set(8, 999)
+        cache.set(9, 9)
+        cache.set(7, 7)
+        cache.set(4, 44)
+        cache.set(5, 5)
+        cache.set(6, 6)
+
+        print(cache.get(1))         
+        # 1
+        print(cache.get(2))         
+        # 2
+        print(cache.get(3))
+        # 3
+        print(cache.get(6)) 
+        # 6
+        print(cache.get(8))
+        # 999
+        print(cache.get(3))
+        # 3 
+        print(cache.get(8)) 
+        # 999
+        print(cache.get(8))
+        # 999
+        cache.set(8, 999888)  
+        
+        print(cache.get(6))
+        # 6
+        print(cache.get(8))       
+        # 999888
+
+
+    def test_7(): #capacity test on cache
+        print("***********************************************")
+        cache = LRU_Cache(2000)
+        cache.set(1, 1)
+        cache.set(0, 0)
+        cache.set(300, 300)
+        cache.set(4000, 4000)
+        cache.set(1999, 1999)
+        cache.set(2000, 2000)
+
+        print(cache.get(1))         
+        # 1
+        print(cache.get(2))         
+        # -1
+        print(cache.get(4000))
+        # 4000
+        print(cache.get(300)) 
+        # 300
+        print(cache.get(299))
+        # -1
+        print(cache.get(0))
+        # 2000 
+        print(cache.get(8)) 
+        # 999888
+        print(cache.get(2000))
+        # 2999
+        cache.set(8, 999888)  
+        
+        print(cache.get(8))
+        # 999888
+        print(cache.get(8))       
+        # 999888
+        cache.set(1999, 2999)
+        cache.set(0, 0)
+        print(cache.get(1999))
+        # 2999
+        print(cache.get(2000)) 
+        #2000
+        cache.set(2001, 2001)
+        cache.set(1000, 1000)
+
+        print(cache.get(0))
+        # 0
+        print(cache.get(6))
+        # -1
+        print(cache.get(1999))
+        #2999
+        print(cache.get(2000))
+        #2000
+        print(cache.get(2001))
+        #2001
+
+        print(list(cache.hashtable.keys()))
+        #[1, 0, 300, 4000, 1999, 2000, 8, 2001, 1000]
+        print("usage  :: ", len(cache.hashtable.keys()))
+        #usage  :: 9 
+
+
+
+
 
     test_1() #from course
     test_2() #edge_test
     test_3() #edge_test
+    test_4()
+    test_5()
+    test_6()
+    test_7()
+
   
