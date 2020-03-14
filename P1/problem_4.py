@@ -31,18 +31,17 @@ def is_user_in_group(user, group):
     """
 
     db_groups = group.get_groups()
-    #print(db_groups)
+  
     flag = False
 
     if user in group.get_users():
          return True
 
     for i in group.get_groups():
-        #print(i.name)
+ 
         
         if user in i.get_users():
-            #print("ok")
-    #         flag = True
+ 
             return True
         else:
             for j in i.get_groups():

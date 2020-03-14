@@ -16,7 +16,6 @@ class Blockdata:
         sha = hashlib.sha256()
         hash_str = data.encode('utf-8') + str(self.timestamp).encode('utf-8') + str(self.previous_hash).encode('utf-8')
         sha.update(hash_str)
-        #print(sha.hexdigest())
 
         return sha.hexdigest()
 
