@@ -76,7 +76,8 @@ def compute_numbers(data):
     while data:
 
         number1.append(data.pop())
-        number2.append(data.pop())
+        if data:
+            number2.append(data.pop())
 
     # for i in range (len(data)):
     #     number1.append(data[2*i])
@@ -89,6 +90,9 @@ nr1, nr2 = compute_numbers([9, 8, 6, 5, 4, 2])
 print(nr1, " :: ", nr2)
 
 nr1, nr2 = compute_numbers([2, 4, 5, 6, 8, 9])
+print(nr1, " :: ", nr2)
+
+nr1, nr2 = compute_numbers([2,3, 4, 5, 6, 8, 9])
 print(nr1, " :: ", nr2)
 
 # test_list_1 = [8, 3, 1, 7, 0, 10, 2]
