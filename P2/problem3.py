@@ -19,6 +19,15 @@ If it is done tke next
 
 
 [3,9,10,27,38,43,82]
+
+
+#######
+
+[4, 6, 2, 5, 9, 8]
+
+[9, 8, 6, 5, 4, 2]
+
+[964][852]
 """
 
 
@@ -60,11 +69,33 @@ def merge(left, right):
     return merged
 
 
-test_list_1 = [8, 3, 1, 7, 0, 10, 2]
-test_list_2 = [1, 0]
-test_list_3 = [97, 98, 99]
-test_list_4 = [38,27,43,3,9,82,10]
-print('{} to {}'.format(test_list_1, mergesort(test_list_1)))
-print('{} to {}'.format(test_list_2, mergesort(test_list_2)))
-print('{} to {}'.format(test_list_3, mergesort(test_list_3)))
-print('{} to {}'.format(test_list_4, mergesort(test_list_4)))
+def compute_numbers(data):
+    number1 = []
+    number2 = []
+
+    while data:
+
+        number1.append(data.pop())
+        number2.append(data.pop())
+
+    # for i in range (len(data)):
+    #     number1.append(data[2*i])
+    #     number2.append(data[2*i+1])
+
+    return number1, number2
+
+
+nr1, nr2 = compute_numbers([9, 8, 6, 5, 4, 2])
+print(nr1, " :: ", nr2)
+
+nr1, nr2 = compute_numbers([2, 4, 5, 6, 8, 9])
+print(nr1, " :: ", nr2)
+
+# test_list_1 = [8, 3, 1, 7, 0, 10, 2]
+# test_list_2 = [1, 0]
+# test_list_3 = [97, 98, 99]
+# test_list_4 = [38,27,43,3,9,82,10]
+# print('{} to {}'.format(test_list_1, mergesort(test_list_1)))
+# print('{} to {}'.format(test_list_2, mergesort(test_list_2)))
+# print('{} to {}'.format(test_list_3, mergesort(test_list_3)))
+# print('{} to {}'.format(test_list_4, mergesort(test_list_4)))
