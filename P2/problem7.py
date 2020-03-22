@@ -43,10 +43,15 @@ class RouteTrie:
         current_node = self.root
 
         for partpath in path:
-            if partpath in path:
+            #print("1----")
+            if partpath in current_node.children:
                 current_node = current_node.children[partpath]
             else:
                 return None
+                
+            #else:
+             #   print("2----")
+              #  return None
         
         return current_node.handler
 
@@ -86,9 +91,14 @@ class Router:
         # you need to split the path into parts for 
         # both the add_handler and loopup functions
         # so it should be placed in a function here
-
+        part_ret = []
         partpath = route.split('/')
-        return [part for part in partpath if part != '']
+        for ijk in partpath:
+            if ijk != '':
+                part_ret.append(ijk)
+
+        return part_ret
+
 
 
 
