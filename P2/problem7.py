@@ -102,15 +102,6 @@ class Router:
 
 
 
-    def split_path2(self, route):
-        # you need to split the path into parts for 
-        # both the add_handler and loopup functions,
-        # so it should be placed in a function here
-        router_path = route.split("/")
-        return router_path
-
-
-
 # Here are some test cases and expected outputs you can use to test your implementation
 
 # create the router and add a route
