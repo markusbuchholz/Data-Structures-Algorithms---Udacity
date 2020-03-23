@@ -82,4 +82,24 @@ print(MyTrie.find("a").suffixes())
 print(MyTrie.find("f").suffixes())
 print(MyTrie.find("t").suffixes())
 
+print(MyTrie.find("ant").suffixes())
+print(MyTrie.find("fu").suffixes())
+print(MyTrie.find("tri").suffixes())
+
+
+print(MyTrie.find("anth").suffixes())
+print(MyTrie.find("funct").suffixes())
+print(MyTrie.find("").suffixes())
+
+
+# ['nt', 'nthology', 'ntagonist', 'ntonym']
+# ['un', 'unction', 'actory']
+# ['rie', 'rigger', 'rigonometry', 'ripod']
+# ['hology', 'agonist', 'onym']
+# ['n', 'nction']
+# ['e', 'gger', 'gonometry', 'pod']
+# ['ology']
+# ['ion']
+# ['ant', 'anthology', 'antagonist', 'antonym', 'fun', 'function', 'factory', 'trie', 'trigger', 'trigonometry', 'tripod']
+
 

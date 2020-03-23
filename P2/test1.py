@@ -1,15 +1,33 @@
 
-import os
+myTuple = ("John", "Peter", "Vicky")
 
-your_path = '/home/User/Desktop/filetxt'
+x = "#".join(myTuple)
 
-path = your_path.split("/")
+print(x)
 
 
-for ijk in path:
-    print(ijk)
-    if ijk == '':
-        print("handler")
+data = str([1,2,3])
+d = data.replace(',' ,'')
+dd = d.replace(' ','')
+#ijk = ' '.join(d)
+#print(dd)
+
+#d = data.replace(',' ,'')
+xx = data.replace(',' ,'').replace(' ','')
+print(xx)
+
+
+# import os
+
+# your_path = '/home/User/Desktop/filetxt'
+
+# path = your_path.split("/")
+
+
+# for ijk in path:
+#     print(ijk)
+#     if ijk == '':
+#         print("handler")
 
 # class TestClass1 (object):
 #     def __init__ (self):

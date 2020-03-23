@@ -114,3 +114,53 @@ print(router.lookup("/home")) # should print 'not found handler' or None if you 
 print(router.lookup("/home/about")) # should print 'about handler'
 print(router.lookup("/home/about/")) # should print 'about handler' or None if you did not handle trailing slashes
 print(router.lookup("/home/about/me")) # should print 'not found handler' or None if you did not implement one
+
+
+
+r1 = Router("root 1") 
+r1.add_handler("/home/markus/ubuntu/linux/OS/run", "Run Ubuntu")  
+
+print("------------------------------------------------------")
+print(r1.lookup("/")) 
+print(r1.lookup("/home")) 
+print(r1.lookup("/home/markus"))
+print(r1.lookup("/home/markus/markus/ubuntu"))
+print(r1.lookup("/home/markus/ubuntu/linux/OS/run")) 
+print(r1.lookup("/home/markus/ubuntu/linux/OS/run/"))
+
+
+r2 = Router("root 1") 
+r2.add_handler("/home/markus/ubuntu", "Run Ubuntu")  
+r2.add_handler("/home/markus/ubuntu/linux", "Run your Linux")
+r2.add_handler("/home/markus/ubuntu/linux/OS/run", "Run your OS")
+r2.add_handler("/home/markus/ubuntu/linux/OS/run", "Only Run")
+
+print("------------------------------------------------------")
+print(r2.lookup("/")) 
+print(r2.lookup("/home")) 
+print(r2.lookup("/home/markus")) 
+print(r2.lookup("/home/markus/ubuntu")) 
+print(r2.lookup("/home/markus/ubuntu/linux")) 
+print(r2.lookup("/home/markus/ubuntu/linux/OS/run")) 
+print(r2.lookup("/home/markus/ubuntu/linux/OS/run/"))
+
+# None
+# None
+# about handler
+# about handler
+# None
+# ------------------------------------------------------
+# None
+# None
+# None
+# None
+# Run Ubuntu
+# Run Ubuntu
+# ------------------------------------------------------
+# None
+# None
+# None
+# Run Ubuntu
+# Run your Linux
+# Only Run
+# Only Run

@@ -1,5 +1,4 @@
 
-
 def sqrt(number):
     """
     Calculate the floored square root of a number
@@ -43,4 +42,23 @@ print ("Pass" if  (0 == sqrt(0.9)) else "Fail")
 print ("Pass" if  (0 == sqrt(None)) else "Fail")
 print ("Pass" if  (0 == sqrt('number')) else "Fail")
 
+
+# Pass
+# wrong number was given ...
+# Pass
+# Pass
+# Pass
+# Pass
+# Pass
+# Pass
+# Pass
+# wrong number was given ...
+# Pass
+# wrong number was given ...
+# Pass
+# Pass
+# string was given not number ... 
+# Pass
+# string was given not number ... 
+# Pass
 

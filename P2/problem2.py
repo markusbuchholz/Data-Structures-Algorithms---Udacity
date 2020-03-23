@@ -1,7 +1,4 @@
 
-nums = [27,29,32,33,88,4,7,6,8,12,13,16,22,23]
-#nums = [1,2,3,4,5,6]
-
 
 def find_pivot(data):
     for i in range (len(data)-1):
@@ -39,23 +36,19 @@ def rotated_array_search(input_list, number):
        int: Index or -1
     """
     pivot = find_pivot(input_list)
-    print("pivot index ::", pivot, "element :: ", input_list[pivot])
+    #print("pivot index ::", pivot, "element :: ", input_list[pivot])
     rotated = rotate_array(input_list, pivot)
-    print("rotated :: ", rotated)
+    #print("rotated :: ", rotated)
     index = find_target_index(rotated,number,0, len(input_list)-1)
-    print("index in rotated ::: ", index)
+    #print("index in rotated ::: ", index)
 
     if index == -1:
         return -1
 
-    #nums = [27,29,32,33,88,4,7,6,8,12,13,16,22,23]
-    #print("check ::", rotated[pivot])
-   # print("check :: ", input_list[len(input_list)-1])
     if input_list[pivot]== number :
         return pivot
 
     if rotated[pivot] == number:
-        print("check ::", rotated[pivot])
         return 0
     if number > input_list[len(input_list)-1]:
         return index - pivot + 1 
@@ -67,18 +60,13 @@ def rotated_array_search(input_list, number):
 def linear_search(input_list, number):
     for index, element in enumerate(input_list):
         if element == number:
-            #print("linear :: ", index)
             return index
     return -1
 
 def test_function(test_case):
     input_list = test_case[0]
     number = test_case[1]
-    lin = linear_search(input_list, number)
-    rot = rotated_array_search(input_list, number)
-
-    print( "lin ::", lin, " rot :: ", rot)
-    if lin == rot:
+    if linear_search(input_list, number) == rotated_array_search(input_list, number):
         print("Pass")
     else:
         print("Fail")
@@ -89,13 +77,18 @@ test_function([[6, 7, 8, 1, 2, 3, 4], 8])
 test_function([[6, 7, 8, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
 
-# 2 => pivot + index = 4 + 1 + 1
-# 6 => pivot + index = 4 + 1 + 1
-# 6, 7, 8, 9, 10,-- 1, 2, 3, 4
-# 1, 2, 3, 4 ----- 6, 7, 8, 9, 10
+test_function([[], 1])
+test_function([[-2, 90, 100, -2, 2, 3, 4], 2])
+test_function([[-2, 90, 100, -2, 2, 3, 4], 0])
 
-# 9 => index - pivot + 1 = 5-3+1
-# 6 => 4
-# 6, 7, 8, 9, 10,-- 1, 2, 3, 4
-# 1, 2, 3, 4 ----- 6, 7, 8, 9, 10
+
+# Pass
+# Pass
+# Pass
+# Pass
+# Pass
+# Pass
+# Pass
+# Pass
+
 
