@@ -1,6 +1,6 @@
 
 #https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
-def find_pivot1(data):
+def find_pivot(data):
     for i in range (len(data)-1):
         if data[i+1]<data[i]:
             return i    
@@ -18,15 +18,18 @@ def find_pivot2(data):
             return ii
     ii += 1
 
-def find_pivot(data):
-    current = 0
-    ii = 0
-    while d in data:
-        if current < d: 
-        
-        ata[i] < datain range (len(data)-1):
-        if data[i+1]<data[i]:
-            return i    
+def find_pivot_binary_search(nlist, tgt):
+    low = 0
+    high = len(nlist) - 1
+
+    while low <= high:
+        pivot = (low + high) // 2
+        if nlist[pivot] == tgt:
+            return pivot
+        elif nlist[pivot] > tgt:
+            high = pivot - 1
+        else:
+            low = pivot + 1
     return -1
 
 def rotate_array(data, pivot):
@@ -58,7 +61,10 @@ def rotated_array_search(input_list, number):
     Returns:
        int: Index or -1
     """
-    pivot = find_pivot(input_list)
+    pivot1 = find_pivot(input_list)
+    print("pivot1 ::", pivot1)
+    pivot = find_pivot_binary_search(input_list, number)
+    print(" pivot2 ::", pivot)
     #print("pivot index ::", pivot, "element :: ", input_list[pivot])
     rotated = rotate_array(input_list, pivot)
     #print("rotated :: ", rotated)
