@@ -1,36 +1,25 @@
 
 #https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
-def find_pivot(data):
-    for i in range (len(data)-1):
-        if data[i+1]<data[i]:
-            return i    
-    return -1
 
+def findPivot(arr, low, high): 
+      
+    # base cases 
+    if high < low: 
+        return -1
+    if high == low: 
+        return low 
+      
+    #low + (high - low)/2; 
+    mid = int((low + high)/2) 
+      
+    if mid < high and arr[mid] > arr[mid + 1]: 
+        return mid 
+    if mid > low and arr[mid] < arr[mid - 1]: 
+        return (mid-1) 
+    if arr[low] >= arr[mid]: 
+        return findPivot(arr, low, mid-1) 
+    return findPivot(arr, mid + 1, high) 
 
-def find_pivot2(data):
-
-    ii = 0
-    while data[ii] < data[ii + 1]:
-        ii += 1
-        if ii + 1 == len(data):
-            ii = len(data) // 2
-            #break
-            return ii
-    ii += 1
-
-def find_pivot_binary_search(nlist, tgt):
-    low = 0
-    high = len(nlist) - 1
-
-    while low <= high:
-        pivot = (low + high) // 2
-        if nlist[pivot] == tgt:
-            return pivot
-        elif nlist[pivot] > tgt:
-            high = pivot - 1
-        else:
-            low = pivot + 1
-    return -1
 
 def rotate_array(data, pivot):
     rotated = data[pivot+1:]+ data[0:pivot+1]
@@ -61,15 +50,16 @@ def rotated_array_search(input_list, number):
     Returns:
        int: Index or -1
     """
-    pivot1 = find_pivot(input_list)
-    print("pivot1 ::", pivot1)
-    pivot = find_pivot_binary_search(input_list, number)
-    print(" pivot2 ::", pivot)
-    #print("pivot index ::", pivot, "element :: ", input_list[pivot])
+    low = 0
+    high = len(input_list) - 1
+
+    pivot = findPivot(input_list  ,low, high)
+    #print("pivot ::", pivot)
+
     rotated = rotate_array(input_list, pivot)
-    #print("rotated :: ", rotated)
+    
     index = find_target_index(rotated,number,0, len(input_list)-1)
-    #print("index in rotated ::: ", index)
+    
 
     if index == -1:
         return -1
@@ -119,5 +109,4 @@ test_function([[-2, 90, 100, -2, 2, 3, 4], 0])
 # Pass
 # Pass
 # Pass
-
 
