@@ -1,7 +1,30 @@
 
+#https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
+def find_pivot1(data):
+    for i in range (len(data)-1):
+        if data[i+1]<data[i]:
+            return i    
+    return -1
+
+
+def find_pivot2(data):
+
+    ii = 0
+    while data[ii] < data[ii + 1]:
+        ii += 1
+        if ii + 1 == len(data):
+            ii = len(data) // 2
+            #break
+            return ii
+    ii += 1
 
 def find_pivot(data):
-    for i in range (len(data)-1):
+    current = 0
+    ii = 0
+    while d in data:
+        if current < d: 
+        
+        ata[i] < datain range (len(data)-1):
         if data[i+1]<data[i]:
             return i    
     return -1

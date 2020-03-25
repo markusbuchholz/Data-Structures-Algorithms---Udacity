@@ -20,7 +20,7 @@ def sqrt(number):
         return 0
  
 
-    floored = 0
+    floored = 1
 
     while floored*floored <= number:
         floored+=1
