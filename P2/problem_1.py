@@ -15,12 +15,16 @@ def sqrt(number):
         print("string was given not number ... ")
         return 0
 
-    if number <=0:
-        print("wrong number was given ...")
+    if number < 0:
+        print("invalid value encountered in sqrt ...")
+        return None
+    
+    if number == 0:
+        print("Given number is 0 ...")
         return 0
  
 
-    floored = 1
+    floored = 0
 
     while floored*floored <= number:
         floored+=1
@@ -44,7 +48,7 @@ print ("Pass" if  (0 == sqrt('number')) else "Fail")
 
 
 # Pass
-# wrong number was given ...
+# Given number is 0 ...
 # Pass
 # Pass
 # Pass
@@ -52,10 +56,10 @@ print ("Pass" if  (0 == sqrt('number')) else "Fail")
 # Pass
 # Pass
 # Pass
-# wrong number was given ...
+# Given number is 0 ...
 # Pass
-# wrong number was given ...
-# Pass
+# invalid value encountered in sqrt ...
+# Fail
 # Pass
 # string was given not number ... 
 # Pass

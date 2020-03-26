@@ -1,15 +1,25 @@
 
+#By Udacity
 
 def sort_012(data):
     
+    next_pos_0 = 0
+    next_pos_2 = len(data) - 1
 
-    for i in range (1, len(data)):
-        value = data[i]
-        space = i
-        while (0<space and data[space-1] > value):
-            data[space] = data [space -1]
-            space = space -1
-        data[space] = value
+    front_index = 0
+
+    while front_index <= next_pos_2:
+        if data[front_index] == 0:
+            data[front_index] = data[next_pos_0]
+            data[next_pos_0] = 0
+            next_pos_0 += 1
+            front_index += 1
+        elif data[front_index] == 2:           
+            data[front_index] = data[next_pos_2] 
+            data[next_pos_2] = 2
+            next_pos_2 -= 1
+        else:
+            front_index += 1
 
     return data
 
